@@ -1,20 +1,127 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomeController!{% endblock %}
+{% block title %}home{% endblock %}
 
 {% block body %}
-<style>
-    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
-</style>
-
-<div class="example-wrapper">
-    <h1>Hello {{ controller_name }}! ✅</h1>
-
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code><a href="{{ '/home/alex/Bureau/personnel/dev/projects/symfony/portfolio/src/Controller/HomeController.php'|file_link(0) }}">src/Controller/HomeController.php</a></code></li>
-        <li>Your template at <code><a href="{{ '/home/alex/Bureau/personnel/dev/projects/symfony/portfolio/templates/home/index.html.twig'|file_link(0) }}">templates/home/index.html.twig</a></code></li>
-    </ul>
-</div>
+    <section 
+    style="background: url('images/bg.jpg')"
+    class="h-screen bg-no-repeat bg-center bg-cover text-white">
+        <div class="w-10/12 mx-auto h-4/6">
+            <div class="h-full flex items-center">
+                <div>
+                    <p class="text-3xl font-ubuntu">Hi, My name is</p>
+                    <p class="text-5xl font-ubuntu">Schuame Alexandre Lionel</p>
+                    <p class="text-3xl font-ubuntu">and I am a <span id="element" class="text-red"></span> </p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- about me -->
+    <section class="py-24">
+        <div class="w-10/12 mx-auto">
+            <div class="text-center">
+                <h2 class="text-5xl font-medium">About Me</h2>
+                <span class="text-xl text-red font-medium font-ubuntu">who i am</span>
+            </div>
+            <div class="flex flex-wrap mt-10 justify-center md:justify-around gap-8">
+                <img class="w-72 h-72 lg:w-96 lg:h-96 rounded object-cover" src={{asset('images/1.jpg')}} alt="">
+                <div class="w-[450px]">
+                    <p class="text-xl font-bold">I'm <span id="element2" class="text-red"></span></p>
+                    <p class="text-lg">I am a young Camerounian of 25 years old and a student in Software Engineering at the National Advanced School of
+                    Polytechnic of the university of Douala. I pratice Judo since 2015 and I am 2 times gold medalist at the university
+                    games.</p>
+                    <div class="flex justify-around mt-5">
+                        <a href="mailto:contact@schuamealexandre.com" class="border-2 border-[crimson] text-red p-4 rounded-2xl font-medium hover:bg-[crimson] hover:text-white hover:border-0 hover:border-[crimson] transition-all duration-75">Contact Me</a>
+                        <a target="_blank" href="/download-cv" class="bg-[crimson] p-4 rounded-2xl text-white hover:bg-white hover:text-[crimson] hover:border-2 hover:border-[crimson] transition-all duration-75">Download CV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- services -->
+    <section class="py-24 bg-black">
+        <div class="w-10/12 mx-auto">
+            <div class="text-center">
+                <h2 class="text-5xl font-medium text-white">My Services</h2>
+                <span class="text-xl text-red font-medium font-ubuntu">what i provide</span>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8 mt-5">
+                <div class="text-center bg-[#222] rounded-lg p-5">
+                    <i class="text-5xl text-red fa-solid fa-database"></i>
+                    <h3 class="text-white font-bold text-lg">App Design</h3>
+                    <p class="text-white">I design your app using modern tools from your needs, ideas</p>
+                </div>
+                <div class="text-center bg-[#222] rounded-lg p-5">
+                    <i class="text-5xl text-red fa-solid fa-palette"></i>
+                    <h3 class="text-white font-bold text-lg">Front End Dev</h3>
+                    <p class="text-white">I build users interfaces based on your specifications</p>
+                </div>
+                <div class="text-center bg-[#222] rounded-lg p-5">
+                    <i class="text-5xl text-red fa-solid fa-code"></i>
+                    <h3 class="text-white font-bold text-lg">Back End Dev</h3>
+                    <p class="text-white">I implement the logic based on the app design to manage the datas on your app</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 ">
+        <div class="w-10/12 mx-auto">
+            <div class="text-center">
+                <h2 class="text-5xl font-medium ">My Skills</h2>
+                <span class="text-xl text-red font-medium font-ubuntu">what i know</span>
+            </div>
+            <div class="grid md:grid-cols-3 gap-5">
+                <div class="mt-5">
+                    <div class="text-center space-y-5 px-4">
+                        <span class="font-medium font-ubuntu">Front-End</span>
+                        <div class="">
+                            <ul class="grid grid-cols-3 gap-5">
+                                {% for tech in frontend %}
+                                    <li><img class="h-20 w-20" src="uploads/logos/{{tech.icon}}" alt={{tech.name}}></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <div class="text-center space-y-5 px-4">
+                        <span class="font-medium font-ubuntu">Back-End</span>
+                        <div class="">
+                            <ul class="grid grid-cols-3 gap-5">
+                                {% for tech in backend %}
+                                    <li><img class="h-20 w-20" src="uploads/logos/{{tech.icon}}" alt={{tech.name}}></li>
+                                {% endfor %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <div class="mt-5">
+                    <div class="text-center space-y-5 px-4">
+                        <span class="font-medium font-ubuntu">Languages Spoken</span>
+                        <div class="">
+                            <ul class="flex justify-center gap-5">
+                                <li><img class="h-10 w-16" src="images/france.jpeg" alt="france flag"></li>
+                                <li><img class="h-10 w-16" src="images/gb.png" alt="great britain flag"></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section class="py-24 bg-black">
+        <div class="w-10/12 mx-auto">
+            <div class="text-center">
+                <h2 class="text-5xl font-medium text-white">Contact Me</h2>
+                <span class="text-xl text-red font-medium font-ubuntu">get in touch</span>
+            </div>
+            <div class="flex justify-center mt-5">
+                <ul class="text-white space-y-5">
+                    <li class="space-x-2"><i class="fa-solid fa-at text-red text-xl"></i> <a href="mailto:contact@schuamealexandre.com">contact@schuamealexandre.com</a></li>
+                    <li class="space-x-2"><i class="fa-solid fa-phone text-red text-xl"></i> <span>+237 695 254 870</span></li>
+                    <li class="space-x-3"><i class="fa-solid fa-map-marker text-red text-xl"></i> <span>Douala, Akwa</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
 {% endblock %}

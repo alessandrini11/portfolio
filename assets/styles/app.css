@@ -1,3 +1,22 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;500&family=Ubuntu+Condensed&family=Ubuntu:wght@300;400;500&display=swap");
+
+html{
+  scroll-behavior: smooth;
+}
+body {
+  font-family: "Poppins", sans-serif;
+}
+
+h2 {
+  font-family: "Ubuntu", sans-serif;
+}
+.font-ubuntu {
+  font-family: "Ubuntu", sans-serif;
+}
+.text-red {
+  color: crimson;
+}

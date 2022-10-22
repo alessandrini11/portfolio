@@ -1,0 +1,27 @@
+{% extends '@EasyAdmin/page/content.html.twig' %}
+{% block title 'Dashboard' %}
+{% block content_title %}Dashboard{% endblock %}
+
+{% block main %}
+<section class="grid grid-cols-3 gap-5">
+    <div class="grid grid-cols-5 gap-3 bg-white rounded-md shadow-md p-2">
+        <div class="bg-green-500 col-span-2 flex justify-center items-center text-white rounded-md p-3 ">
+            <i class="text-xl fa fa-users"></i>
+        </div>
+        <div class="col-span-3 flex flex-col justify-between">
+            <span>visitors</span>
+            <span class="font-semibold text-xl">{{visitors | length }}</span>
+        </div>
+    </div>
+    {# <form action="/update-photo" action="" method="post" class="w-full" required="required" >
+        <div class="flex flex-col space-y-1">
+            <input type="file" name="photo" id="photo">
+            <button type="submit" class="bg-[crimson] text-white p-1">update photo</button>
+        </div>
+    </form> #}
+    {# {{form_start(updatephotoform)}}
+        {{ form_row(updatephotoform.photo) }}
+        {{ form_row(updatephotoform.update_photo) }}
+    {{form_end(updatephotoform)}} #}
+</section>
+{% endblock %}

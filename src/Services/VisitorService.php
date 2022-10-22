@@ -15,7 +15,7 @@ class VisitorService
     {
         $visitor = new Visitor();
         $visitor->setIp($ip);
-        $this->visitorRepository->add($visitor);
+        $this->visitorRepository->save($visitor, true);
         return $visitor;
     }
 
