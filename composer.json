@@ -13,6 +13,7 @@
         "doctrine/orm": "^2.13",
         "easycorp/easyadmin-bundle": "^4.4",
         "fakerphp/faker": "^1.21",
+        "gpslab/geoip2": "^2.0",
         "nelmio/cors-bundle": "^2.3",
         "phpdocumentor/reflection-docblock": "^5.3",
         "phpstan/phpdoc-parser": "^1.9",
@@ -42,6 +43,7 @@
         "symfony/string": "6.1.*",
         "symfony/translation": "6.1.*",
         "symfony/twig-bundle": "6.1.*",
+        "symfony/ux-chartjs": "^2.8",
         "symfony/validator": "6.1.*",
         "symfony/web-link": "6.1.*",
         "symfony/webpack-encore-bundle": "^1.16",
@@ -83,7 +85,8 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "geoip2:update": "symfony-cmd"
         },
         "post-install-cmd": [
             "@auto-scripts"

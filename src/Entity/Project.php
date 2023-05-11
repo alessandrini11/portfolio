@@ -128,4 +128,16 @@ class Project
 
         return $this;
     }
+
+    public function getData(): array
+    {
+        return [
+            "id" => $this->id,
+            "name" => $this->name,
+            "url" => $this->url,
+            "image" => $this->image,
+            "created_at" => $this->createdAt,
+            "updated_at" => $this->updatedAt
+        ];
+    }
 }

@@ -7,6 +7,7 @@ use App\Repository\FrontendRepository;
 use App\Repository\ProjectRepository;
 use App\Repository\VisitorRepository;
 use App\Services\VisitorService;
+use GeoIp2\Database\Reader;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\BinaryFileResponse;
 use Symfony\Component\HttpFoundation\Request;

@@ -8,33 +8,44 @@ use App\Entity\Frontend;
 use App\Entity\Project;
 use App\Entity\User;
 use App\Entity\Visitor;
+use App\Repository\ProjectRepository;
 use App\Repository\VisitorRepository;
+use App\Services\VisitorService;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Assets;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractDashboardController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\UX\Chartjs\Builder\ChartBuilderInterface;
+use Symfony\UX\Chartjs\Model\Chart;
 
 class DashboardController extends AbstractDashboardController
 {
-    private VisitorRepository $visitorRepository;
-    public function __construct(VisitorRepository $visitorRepository)
+    public function __construct(
+        readonly private VisitorRepository $visitorRepository,
+        readonly private VisitorService $visitorService,
+        readonly private ProjectRepository $projectRepository,
+        readonly private ChartBuilderInterface $chartBuilder
+    )
     {
-        $this->visitorRepository = $visitorRepository;
+
     }
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
+        $chart = $this->createChart($this->visitorService->getVisitorGroupedByCountry($this->visitorRepository));
         return $this->render('admin/dashboard.html.twig', [
-            'visitors' => $this->visitorRepository->findAll()
+            'visitors' => $this->visitorRepository->findAll(),
+            'projects' => $this->projectRepository->findAll(),
+            'chart' => $chart,
         ]);
     }
-
     public function configureAssets(): Assets
     {
         return Assets::new()
-            ->addCssFile('build/app.css');
+            ->addWebpackEncoreEntry('app')
+            ;
     }
     public function configureDashboard(): Dashboard
     {
@@ -51,5 +62,28 @@ class DashboardController extends AbstractDashboardController
         yield MenuItem::linkToCrud('Back End', 'fas fa-code', Backend::class);
         yield MenuItem::linkToCrud('Visitors', 'fas fa-users', Visitor::class);
         yield MenuItem::linkToCrud('User', 'fas fa-user', User::class);
+    }
+    private function createChart(array $data): Chart
+    {
+        $chart = $this->chartBuilder->createChart(Chart::TYPE_BAR);
+        $chart->setData([
+            'labels' => $data['labels'],
+            'datasets' => [
+                [
+                    'label' => 'My First dataset',
+                    'backgroundColor' => 'rgb(255, 99, 132)',
+                    'borderColor' => 'rgb(109, 40, 217)',
+                    'data' => $data['data'],
+                ],
+            ],
+        ]);
+        $chart->setOptions([
+            'scales' => [
+                'y' => [
+                    'suggestedMin' => 0,
+                ],
+            ],
+        ]);
+        return $chart;
     }
 }

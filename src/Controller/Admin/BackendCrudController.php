@@ -27,9 +27,9 @@ class BackendCrudController extends AbstractCrudController
                 ->setUploadDir('public/uploads/logos')
                 ->setBasePath('uploads/logos')
                 ->setUploadedFileNamePattern('[day][uuid].[extension]'),
-            AssociationField::new('projects'),
-            DateTimeField::new('createdAt'),
-            DateTimeField::new('updatedAt'),
+            AssociationField::new('projects')->hideOnForm(),
+            DateTimeField::new('createdAt')->hideOnForm(),
+            DateTimeField::new('updatedAt')->hideOnForm(),
         ];
     }
     
