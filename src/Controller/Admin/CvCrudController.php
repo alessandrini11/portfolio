@@ -2,14 +2,14 @@
 
 namespace App\Controller\Admin;
 
-use App\Entity\Visitor;
+use App\Entity\Cv;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 
-class VisitorCrudController extends AbstractCrudController
+class CvCrudController extends AbstractCrudController
 {
     public static function getEntityFqcn(): string
     {
-        return Visitor::class;
+        return Cv::class;
     }
 
     /*
