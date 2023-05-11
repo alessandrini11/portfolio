@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Backend;
+use App\Entity\Cv;
 use App\Entity\Frontend;
 use App\Entity\Project;
 use App\Entity\User;
@@ -45,6 +46,7 @@ class DashboardController extends AbstractDashboardController
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         yield MenuItem::linkToCrud('Projects', 'fas fa-cogs', Project::class);
+        yield MenuItem::linkToCrud('Cv', 'fas fa-file', Cv::class);
         yield MenuItem::linkToCrud('Front End', 'fas fa-palette', Frontend::class);
         yield MenuItem::linkToCrud('Back End', 'fas fa-code', Backend::class);
         yield MenuItem::linkToCrud('Visitors', 'fas fa-users', Visitor::class);

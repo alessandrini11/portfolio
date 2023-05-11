@@ -38,7 +38,8 @@ class ProjectCrudController extends AbstractCrudController
             ImageField::new('image')
                 ->setRequired(false)
                 ->setUploadDir('public/uploads/projects')
-                ->setBasePath('uploads/projects'),
+                ->setBasePath('uploads/projects')
+                ->setUploadedFileNamePattern('[day][uuid].[extension]'),
             AssociationField::new('frontend')
                 ->setFormTypeOption('by_reference', false),
             AssociationField::new('backend')

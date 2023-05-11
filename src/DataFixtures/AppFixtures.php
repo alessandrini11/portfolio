@@ -45,7 +45,7 @@ class AppFixtures extends Fixture
                 ->setIcon($faker->imageUrl)
             ;
             $manager->persist($back_end);
-            $back_ends[] = $$back_end;
+            $back_ends[] = $back_end;
         }
         for ($i=0; $i < 10; $i++) { 
             $project = new Project();

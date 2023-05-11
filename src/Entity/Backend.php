@@ -3,13 +3,17 @@
 namespace App\Entity;
 
 use App\Repository\BackendRepository;
+use App\Trait\DateTrait;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\ORM\Mapping\HasLifecycleCallbacks;
 
 #[ORM\Entity(repositoryClass: BackendRepository::class)]
+#[HasLifecycleCallbacks]
 class Backend
 {
+    use DateTrait;
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]

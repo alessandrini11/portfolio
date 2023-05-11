@@ -5,6 +5,7 @@ namespace App\Controller\Admin;
 use App\Entity\Backend;
 use EasyCorp\Bundle\EasyAdminBundle\Controller\AbstractCrudController;
 use EasyCorp\Bundle\EasyAdminBundle\Field\AssociationField;
+use EasyCorp\Bundle\EasyAdminBundle\Field\DateTimeField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\IdField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\ImageField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
@@ -24,8 +25,11 @@ class BackendCrudController extends AbstractCrudController
             TextField::new('name'),
             ImageField::new('icon')
                 ->setUploadDir('public/uploads/logos')
-                ->setBasePath('uploads/logos'),
-            AssociationField::new('projects')
+                ->setBasePath('uploads/logos')
+                ->setUploadedFileNamePattern('[day][uuid].[extension]'),
+            AssociationField::new('projects'),
+            DateTimeField::new('createdAt'),
+            DateTimeField::new('updatedAt'),
         ];
     }
     
