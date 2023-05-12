@@ -70,7 +70,7 @@ class DashboardController extends AbstractDashboardController
             'labels' => $data['labels'],
             'datasets' => [
                 [
-                    'label' => 'My First dataset',
+                    'label' => 'Visitors',
                     'backgroundColor' => 'rgb(255, 99, 132)',
                     'borderColor' => 'rgb(109, 40, 217)',
                     'data' => $data['data'],
