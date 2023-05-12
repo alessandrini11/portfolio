@@ -19,30 +19,6 @@
         {% endblock %}
     </head>
     <body>
-        <header class="bg-[crimson] text-white">
-            <div class="w-10/12 mx-auto">
-                <nav class="flex justify-between py-5 items-center">
-                    <a class="text-2xl" href={{path('app_home')}}>SAL</a>
-                    {% if visitors is defined %}
-                        <span>{{visitors | length}} visitors</span>
-                    {% endif %}
-                    <ul class="flex space-x-5 items-center">
-                        <li><a href={{path('app_home')}} class="">Home</a></li>
-                        <li><a href={{path('app_project')}} class="">Projects</a></li>
-                        {% if app.user %}
-                            <li><a href={{path('admin')}} class="">Admin</a></li>
-                            <li><a href={{path('app_logout')}} class=""><i class="fa-solid fa-power-off"></i></a></li>
-                        {% endif %}
-                    </ul>
-                </nav>
-            </div>
-        </header>
         {% block body %}{% endblock %}
-        <footer class="bg-[#222]">
-            <div class="flex justify-center p-5">
-                <p class="text-white text-sm md:text-base">Created By <span class="text-red">Schuame alexandre</span> | © 2022 All rights reserved</p>
-            </div>
-        </footer>
-        <span id="up-button" class="bg-[crimson] p-3 rounded-md fixed bottom-10 right-6 cursor-pointer"> <i class="fa-solid fa-arrow-up text-white"></i> </span>
     </body>
 </html>
