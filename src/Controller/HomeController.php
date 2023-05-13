@@ -25,7 +25,7 @@ class HomeController extends AbstractController
     #[Route('/download-cv', name: 'app_cv', methods:['GET'])]
     public function downloadCv(): BinaryFileResponse
     {
-        $cvPath = "cv/cv.pdf";
+        $cvPath = "uploads/cv/cv.pdf";
         $headers = array(
             'Content-Type: application/pdf',
         );
